@@ -1,0 +1,302 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>my webpage</title>
+	<meta charset="utf-8" />
+    <style type="text/css">
+        body{
+            background-color: #333;
+            font-size: 1.5em;
+            padding: 0;
+            margin: 0;
+            display: flex;
+            flex-flow: column;
+            align-items: center;
+        }
+        /*header*/
+        ul{
+            list-style:none;
+        }
+        a{
+            text-decoration: none;
+        }
+        header{
+            position: fixed;
+            display: flex;
+            flex-flow: row wrap;
+            justify-content: space-between;
+            align-items: center;
+            background-color: gray;
+            width: 100%;
+            height: 3em;
+            top: 0;
+        }
+        header ul{
+            display: flex;
+            flex-flow: row;
+            justify-content: space-around;
+            width: 40%;
+            align-items: center;
+        }
+        header ul li{
+            display: flex;
+            flex-flow: row nowrap;
+            justify-content: center;
+            align-items: center;
+            background-color: green;
+            height: 50px;
+            width: 30%;
+        }
+        li:hover{
+            background-color: white;
+        }
+
+        header img{
+            width: 2.5em;
+            height: 2.5em;
+            border-radius: 50%;
+        }
+
+        /*article*/
+        #section1{
+            padding-top:100px; 
+        }
+        .section{
+            display: flex;
+            flex-flow: row ;
+            justify-content:space-around;
+            background-color: #ccc;
+            align-items: center;
+            border-bottom:1px solid black;
+            width: 50em;
+
+        }
+        article section{
+            width: 80%;
+        }
+
+        #section2 img{
+
+            width: 15em;
+            padding-bottom: 1em;
+            height: 15em;
+        }
+        section{
+            display: flex;
+            flex-flow: row wrap;
+            justify-content: space-around;
+            align-items: center;
+
+        }
+        #section2{
+            flex-flow: column;
+        }
+        #section1 img{
+            height: 10em;
+            width: 10em;
+            border-radius: 50%;
+
+        }
+        #section3{
+        }
+        form{
+            display: flex;
+            flex-flow: column;
+            justify-content: center;
+            align-items: flex-start;
+            width: 60%;
+            margin-left: 5em;
+        }
+
+        input{
+            width: 70%;
+            margin-bottom: 1em;
+            height: 3em;
+            background-color: #ccc;
+
+        }
+        textarea{
+            width: 70%;
+            margin-bottom: 0.5em;
+            height: 6em;
+            background-color: #ccc;
+            
+            
+        }
+        label{
+            font-size: 0.5em;
+        }
+        /*footer*/
+        footer{
+            width: 100%;
+        }
+        footer article{
+            display: flex;
+            flex-flow: row;
+            justify-content: space-around;
+            align-items: center;
+            background-color: gray;
+        }
+        footer section{
+            display: flex;
+            flex-flow: column;
+            justify-content: space-around;
+            align-items: center;
+            width: 50%;
+        }
+        footer ul{
+            display: flex;
+            flex-flow: row;
+            justify-content: space-around;
+            align-items: center;
+            width: 40%;
+        }
+        footer ul li{
+            width: 30%;
+        }
+        .foot{
+            background-color: purple;
+        }
+
+    </style>
+</head>
+<body>
+    <header>
+    	<img src="https://freecodecamp.cn/images/relaxing-cat.jpg">
+    	<ul>
+    		<li><a href="#section1">关于</a></li>
+    		<li><a href="#section2">成就展示</a></li>
+    		<li><a href="#section3">联系方式</a></li>
+    	</ul>
+    </header>
+    <article id="section1" class="section" >
+        <section>
+        <p>吸猫(XīMāo)：本义是指对猫很有吸引力，又称吸猫体质，后演变为一种对猫极度的喜爱之情，会忍不住做出一些亲亲抱抱的亲昵举动，和猫咪相处会有极大满足感。把脸埋在猫身上，深呼吸，感受猫咪的味道，然后蹭他们柔软的肚皮。据说这样会上瘾，</p>
+        <hr />
+        <p>在这一系列诡异事件的背后到底是人性的扭曲，还是道德的沦丧？欢迎收看大型铲屎纪实——《走进猫奴》</p>
+        </section>
+        <img src="https://pic2.zhimg.com/2f020eb07a5074c1652e7ac1b2e1e591_r.jpg">
+    </article>
+    <article id="section2" class="section">
+        <p>吸猫实录</p>
+        <section class="imgCollection">
+            <img src="https://ss2.baidu.com/6ONYsjip0QIZ8tyhnq/it/u=1350947069,183002099&fm=170&s=F6B010896E5006DE48907D8303007080&w=474&h=744&img.JPEG">
+            
+            <img src="https://ss2.baidu.com/6ONYsjip0QIZ8tyhnq/it/u=1834399418,474986342&fm=170&s=65C0F80C40026AF512A9ACF10300C094&w=365&h=260&img.JPEG">
+           
+            <img src="https://ss0.baidu.com/6ONWsjip0QIZ8tyhnq/it/u=915744402,3297293920&fm=170&s=68C27223A3EB06AC3DA9A8970100A081&w=440&h=392&img.JPEG">
+            
+            <img src="https://ss2.baidu.com/6ONYsjip0QIZ8tyhnq/it/u=1585197341,3991160923&fm=170&s=EDB825D55003AEF80C90951103007042&w=241&h=251&img.JPEG">
+            
+            <img src="https://ss0.baidu.com/6ONWsjip0QIZ8tyhnq/it/u=797500221,3229581444&fm=170&s=80E3DA074C78641300A199F103008012&w=599&h=251&img.JPEG">
+            
+            <img src="https://ss1.baidu.com/6ONXsjip0QIZ8tyhnq/it/u=1601996524,3942484310&fm=170&s=4710E423581243E956B160CC0300E022&w=640&h=595&img.JPEG">
+            
+            <img src="https://ss2.baidu.com/6ONYsjip0QIZ8tyhnq/it/u=2763230963,600429838&fm=170&s=72A490410213027A8CB874970300C080&w=360&h=251&img.GIF">
+            <img src="https://ss2.baidu.com/6ONYsjip0QIZ8tyhnq/it/u=2763230963,600429838&fm=170&s=72A490410213027A8CB874970300C080&w=360&h=251&img.GIF">
+        </section>
+    </article>
+    <article id="section3" class="section" >
+        <form>
+            <label ></label>
+            <input type="text" placeholder="名字" ></input>
+            <label></label>
+            <input type="text"  placeholder="邮箱地址"></input>
+            <label></label>
+            <input type="text" placeholder="电话号码"></input>
+            <label></label>
+            <textarea  placeholder="详细要求说明"></textarea>
+            <button>发送消息</button>
+        </form>
+        <section>
+        <p>滴滴吸猫！--如果你是重度吸猫用户，请赶快联系我们！</p>
+        <p>互联网云选猫，品种性别毛色均可选择，分星级每只猫都有用户评价。同城半小时快递送猫上门，给你当头一猫，按品种和吸猫时间收费！各位猫奴也可以把自家猫拿出赚赚猫粮钱！</p>
+        </section>
+    </article>
+    <footer>
+    	<article>
+    		<section class="left">
+    			<p>页面相关</p>
+    			<p>blh:于丁酉年戊申月丁丑日</p>
+    		</section>
+    		<section class="right">
+    			<p>了解更多</p>
+    			<ul>
+                    <li><a href="#">微博</a></li>
+                    <li><a href="#">百度百科</a></li>
+                    <li><a href="#">wike</a></li>
+                </ul>
+    		</section>
+    	</article>
+    	<article class="foot">blh&copy;保留所有权利</article>
+    </footer>
+    <script type="text/javascript">
+        var getAbout = document.querySelector("#section1");
+        var getimg = document.querySelector("#section2");
+        var getcontact = document.querySelector("#section3");
+        var getHL = document.querySelectorAll("header li");
+        function change(item){
+            for (var i = 0; i < getHL.length; i++) {
+                getHL[i].style.backgroundColor = "green";
+            }
+            getHL[item].style.backgroundColor = "white";
+            //console.log(1);
+        }
+        var getbody = document.querySelector("body");
+        var getfoot = document.querySelector("footer");
+        var tur =true;
+        function changetur(){
+            tur =true;    
+        }
+        //console.log(getAbout.offsetHeight);
+        getbody.onscroll=function(){
+            //console.log(window.scrollY);
+            
+            
+            //console.log(tur);
+            if (tur) {
+            setTimeout(changetur,1000);
+            tur = false;
+
+            }else {
+            console.log(getAbout.offsetHeight+100+getimg.offsetHeight);
+
+                if (window.scrollY<(getAbout.offsetHeight-100)) {
+            //console.log(1);
+                change(0);
+            }else if (window.scrollY<(getAbout.offsetHeight+getimg.offsetHeight-100)) {
+                change(1);
+            }else{
+                change(2);
+            }
+        }
+    };
+        
+       
+        var getinp = document.querySelectorAll("input");
+        var getForm = document.querySelectorAll("label");
+        var gettarear = document.querySelector("textarea");
+        getinp[0].addEventListener("input",function(){inpenter(0);});
+        getinp[1].addEventListener("input",function(){inpenter(1);});
+        getinp[2].addEventListener("input",function(){inpenter(2);});
+        gettarear.addEventListener("input",function(){inpenter(3);});
+      
+        function inpenter(i){
+            //var i = 0;
+            var inlabel = ["名字","邮箱地址","电话号码","详细要求"];
+            //
+            if (i==3?gettarear.value:getinp[i].value) {
+               getForm[i].innerText = inlabel[i];
+                //console.log(1);
+            }else{
+                    getForm[i].innerText= null;
+                }
+
+            }
+            //inpenter(1);
+            
+        
+
+    </script>
+</body>
+</html>

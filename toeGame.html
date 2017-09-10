@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Toe Game</title>
+	<meta charset="utf-8">
+	<style type="text/css">
+        body{
+        	display: flex;
+        	justify-content: center;
+        	align-items: center;
+        	flex-flow: column;
+        }
+        section{
+        	display: flex;
+        	justify-content: center;
+        	flex-flow: row wrap;
+        	align-items: center;
+        	width: 15em;
+        	height: 15em;
+        	background-color: black;
+        	border-radius: 
+
+        }
+        section div{
+        	display: flex;
+        	justify-content: center;
+        	align-items: center;
+        	width: 32.5%;
+        	height: 33%;
+        	border:1px solid white;
+        }
+	</style>
+</head>
+<body>
+  <section>
+  	<div id="1">1</div>
+  	<div id="2">2</div>
+  	<div id="3">3</div>
+  	<div id="4">4</div>
+  	<div id="5">5</div>
+  	<div id="6">6</div>
+  	<div id="7">7</div>
+  	<div id="8">8</div>
+  	<div id="9">9</div>
+  </section>
+  <button>重新开始</button>
+  <script type="text/javascript">
+  	var getdiv=document.querySelectorAll("div");
+  	var getbutton=document.querySelector("button");
+  	var pstyle,cstyle;
+  	var less=[0,1,2,3,4,5,6,7,8];
+  	var chessboard={
+  	   	0:0,
+  	   	1:0,
+  	   	2:0,
+  	   	3:0,
+  	   	4:0,
+  	   	5:0,
+  	   	6:0,
+  	   	7:0,
+  	   	8:0,
+  	   };
+  	var re;
+  	getbutton.onclick=function(){
+  		for (var i = 0; i < getdiv.length; i++) {
+  			getdiv[i].innerHTML="";
+  		}
+  		toblind();
+  		chessboard={
+  	   	0:0,
+  	   	1:0,
+  	   	2:0,
+  	   	3:0,
+  	   	4:0,
+  	   	5:0,
+  	   	6:0,
+  	   	7:0,
+  	   	8:0,
+  	   };
+  	   less=[0,1,2,3,4,5,6,7,8];
+  	   getbutton.innerHTML="重新开始";
+  	   //console.log(re);
+  	   if(re==true){
+  	   	  	pstyle="50%";
+  	   	  	cstyle="0";
+  	   	  }else{
+  	   	  	pstyle="0";
+  	   	  	cstyle="50%";
+  	   	    computer();
+  	   	  }
+  	}
+  	function toblind(){
+  	getdiv[0].onclick=function(){
+  			people(0);
+  			tojudge(1);
+
+  			//console.log(less);
+  			computer();
+  			tojudge(2);
+  	        }
+  	    getdiv[1].onclick=function(){
+  			people(1);
+  			tojudge(1);
+  			computer();
+  			tojudge(2);
+  	        }
+  	    getdiv[2].onclick=function(){
+  			people(2);
+  			tojudge(1);
+  			computer();
+  			tojudge(2);
+  	        }
+  	    getdiv[3].onclick=function(){
+  			people(3);
+  			tojudge(1);
+  			computer();
+  			tojudge(2);
+  	        }
+  	    getdiv[4].onclick=function(){
+  			people(4);
+  			tojudge(1);
+  			
+  			computer();
+  			tojudge(2);
+  	        }
+  	    getdiv[5].onclick=function(){
+  			people(5);
+  			tojudge(1);
+  			computer();
+  			tojudge(2);
+  	        }
+  	    getdiv[6].onclick=function(){
+  			people(6);
+  			tojudge(1);
+  			computer();
+  			tojudge(2);
+  	        }
+  	    getdiv[7].onclick=function(){
+  			people(7);
+  			tojudge(1);
+  			computer();
+  			tojudge(2);
+  	        }
+  	    getdiv[8].onclick=function(){
+  			people(8);
+  			tojudge(1);
+  			computer();
+  			tojudge(2);
+  	        }
+  	    }
+  	    function comAI1(){
+
+  	    }
+  	    function computer(n){
+  	    	var newdiv=document.createElement("div");
+  			newdiv.style.borderRadius=cstyle;
+  	    	getdiv[n].appendChild(newdiv);
+  	    	getdiv[n].onclick=null;
+  	    	chessboard[n]=2;
+  	    	removearr[n];
+  	    }
+  	    function people(n){
+  	    	var newdiv=document.createElement("div");
+  			newdiv.style.borderRadius=pstyle;
+  			//console.log(i);
+  			getdiv[n].appendChild(newdiv);	
+  			getdiv[n].onclick=null;
+  			chessboard[n]=1;
+  			removearr(n);
+  	    }
+  	    function removearr(n){
+  	    	for(var i=0;i<less.length;i++){
+                  if(less[i]==n){
+                  	console.log(n+":"+less[i]);
+                  	console.log(less.splice(i,1));
+
+                  }
+
+  	    	}
+  	    	//console.log(1+":"+less);
+  	    }
+  	   // computer();
+  	   
+  	   //console.log(typeof chessboard[1]);
+  	   function tojudge(n){
+  	   	var k=0;
+  	   	if(chessboard[0]==n){
+  	   		if(chessboard[1]==n&&chessboard[2]==n||chessboard[4]==n&&chessboard[8]==n||chessboard[3]==n&&chessboard[6]==n){
+                k=n;
+  	   		}
+  	   	}
+
+  	   	if(chessboard[1]==n){
+            if(chessboard[4]==n&&chessboard[7]==n){
+            	k=n;
+            }
+  	   	}
+  	   	if(chessboard[2]==n){
+            if(chessboard[5]==n&&chessboard[8]==n||chessboard[4]==n&&chessboard[6]==n){
+            	k=n;
+            }
+  	   	}
+  	   	if(chessboard[3]==n){
+            if(chessboard[4]==n&&chessboard[5]==n){
+            	k=n;
+            }
+  	   	}
+  	   	if(chessboard[6]==n){
+            if(chessboard[7]==n&&chessboard[8]==n){
+            	k=n;
+            }
+  	   	}
+  	   	if(k==1){
+  	   		getbutton.innerHTML="你获得胜利!-重新开始么？";
+  	   	}else if(k==2){
+  	   		getbutton.innerHTML="电脑胜利!-重新开始么？";
+  	   	}
+  	   }
+  	   
+  	   
+  	   /*function tojudge(){
+  	   	var a=judge(1);
+  	   	var b=judge(2);
+  	   	if(a){
+  	   		getbutton.innerHTML="你获得胜利!-重新开始么？";
+  	   	}else if(b){
+  	   		getbutton.innerHTML="电脑胜利!-重新开始么？";
+  	   	}
+  	   }*/
+  	   window.onload=function () {
+  	   	 toblind();
+  	   	  re=confirm("选择棋子：O先！确定：O--取消：口");
+  	   	  if(re==true){
+  	   	  	pstyle="50%";
+  	   	  	cstyle="0";
+  	   	  }else{
+  	   	  	pstyle="0";
+  	   	  	cstyle="50%";
+  	   	  }
+  	   	computer(4);
+
+  	   	  console.log(pstyle+":"+cstyle);
+  	   }
+  	   
+  </script>
+</body>
+</html>

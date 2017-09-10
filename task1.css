@@ -1,0 +1,98 @@
+/*全局设置*/
+body{
+	width: 100%;
+	background-color: gray;
+
+}
+
+body * img{
+	max-width: 100%;
+}
+
+h1{
+	font-size: 2em;
+}
+h2{
+	font-size: 1.5em;
+	color: gray;
+}
+h3{
+	font-size: 0.5em;
+	color: gray;
+}
+/*头部与足部*/
+header,footer{
+	width: 100%;
+	background-color: black;
+	color: white;
+    height: 3em;
+
+}
+
+/*头部图片*/
+header img{
+	height: 3em;
+}
+
+/*头部导航*/
+nav ul{
+	float: right;
+}
+
+nav ul li{
+	float: left;
+	color: white;
+	margin:0px 20px;
+}
+
+nav a{
+	text-decoration: none;
+    color: white;
+}
+
+nav a:hover{
+	color: gray;
+}
+
+/*正文*/
+article{
+	width: 100%;
+	background: white;
+	display: flex;
+	flex-direction: row;
+}
+div{
+	flex-grow: 0.9;
+}
+
+section{
+	border: black solid 1px;
+	margin: 20px 20px;
+}
+aside{
+	width: 800px;
+	margin-left: 40px;
+}
+
+#photo ul{
+	display: flex;
+	flex-direction: row;
+	flex-wrap: wrap;
+	flex:auto;
+}
+#photo ul li{
+	width: 400px;
+	height: 400px;
+	margin: 20px;
+	border:  1px solid black;
+}
+
+
+/*侧边栏*/
+
+/*足部*/
+footer{
+	float: left;
+	text-align: center;
+}
+

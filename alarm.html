@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>闹钟</title>
+	<meta charset="utf-8">
+	<style type="text/css">
+	    body{
+	    	display: flex;
+	    	flex-flow: column;
+	    	justify-content: center;
+	    	align-items: center;
+	    }
+        #alarm{
+        	margin-top: 4em;
+        	width: 20em;
+        	height: 20em;
+        	border-radius: 50%;
+        	border:4px solid green;
+        	background-color: gray;
+        	background:url(https://p1.ssl.qhmsg.com/dr/220__/t018c4682be8b105e43.png);
+        	background-attachment: fixed;
+            background-repeat: no-repeat;
+            background-size: cover;
+        	display: flex;
+        	justify-content: center;
+        	align-items: center;
+        }
+        #clock{
+        	width: 10em;
+        	height: 3em;
+        	font-size: 1.5em;
+        }
+        input{
+        	width: 4em;
+        }
+	</style>
+</head>
+<body>
+    <div id="set">
+        <label>番茄钟</label>
+    	<button id="setend">番茄钟开始</button>
+    	<label>定时番茄钟</label>
+    	<input id="time" placeholder="00:00:00"></input>
+    	<button id="settime">开始计时</button>
+    </div>
+    <div id="alarm">
+    	<button id="clock">wait set</button>
+    </div>
+    <script type="text/javascript">
+    	var end = document.querySelector("#setend");
+    	var settime=document.querySelector("#settime");
+    	var alltime=document.querySelector("#time");
+    	var clock =document.querySelector("#clock");
+    	var do1,do2;
+    	end.onclick=function(){
+            clearInterval(do1);
+            clearInterval(do2);
+    		start=new Date();
+    		var endtime1=25*60;
+            try{
+            	 do1=setInterval(function(){
+            		change(start,endtime1);
+            		if(new Date()-start>endtime1*1000){
+            			console.log("time down!");
+            			clearInterval(do1);
+            			clock.innerText="time down!";
+            			
+            		}
+            		},1000);
+            }catch(ReferenceError){
+            	console.log(1);
+            }
+    	};
+    	settime.onclick=function(){
+            clearInterval(do1);
+            clearInterval(do2);
+    		start=new Date();
+    		var endtime2=alltime.value+"";
+    		endtime2=endtime2.split(":");
+            endtime2=Number(endtime2[0])*3600+Number(endtime2[1])*60+Number(endtime2[2]);
+            try{
+            	    do2=setInterval(function(){
+            		change(start,endtime2);
+            		if(new Date()-start>endtime2*1000){
+            			console.log("time down!");
+            			clearInterval(do2);
+            			clock.innerText="time down!";
+            		}
+            		},1000);
+            }catch(ReferenceError){
+            	console.log(1);
+            }
+    	};
+    	var start =new Date();
+    	function change(start,endtime){
+    		var nowtime=new Date();
+    		nowtime=parseInt((nowtime-start)/1000);
+    		console.log(1);
+    		nowtime=endtime-nowtime;
+    		nhour=parseInt(nowtime/3600);
+    		nminutes=parseInt((nowtime-nhour*3600)/60);
+    		nseconds=nowtime%60;
+            clock.innerText=nhour+":"+nminutes+":"+nseconds;
+    	}
+    </script>
+</body>
+</html>

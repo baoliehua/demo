@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>jccs</title>
+</head>
+<body>
+<script type="text/javascript">
+function SuperType(name){
+    this.name = name;
+	this.colors = ["red","blue","green"];
+	this.age = 1;
+}
+SuperType.prototype.sayName = function(){
+    
+    alert(this.name);
+};
+
+function Another(name){
+	this.name = name;
+}
+SuperType.prototype.name = "blh";
+function object1(o){
+	function F(){}
+	F.prototype = o;
+	var f1 = new F();
+	//delete o.constructor;
+	//f1.prototype = null;
+	//alert(f1.constructor);
+	//alert(f1 instanceof SuperType);
+	return f1;
+}
+function SubType(name){
+	SuperType.call(this,name);
+	this.age="19";
+}
+function inheritPrototype(subType,superType){
+	var prototype = Object.create(superType.prototype);
+	prototype.constructor = subType;
+	subType.prototype = prototype;
+}
+//var supetype1 = new SuperType("blh");
+//var prototype1 = Object.create(SuperType.prototype);
+//var prototype2 = object1(SuperType.prototype);
+//var getname = Object.getOwnPropertyNames(prototype2);
+//alert(getname);
+inheritPrototype(SubType,SuperType);
+var p1 = new SubType("bbllhh");
+alert(p1.age);
+alert(p1.constructor);
+SubType.prototype = SuperType.prototype;
+//alert(SubType.constructor);
+//alert(SubType.prototype.constructor);
+var p2 = new SubType("blh");
+alert(p1.age);
+
+alert(p2.constructor);
+SuperType.prototype = new Object();
+alert(p2.constructor);
+
+//alert(supetype2.);
+//prototype1.sayName();
+</script>
+</body>
+</html>

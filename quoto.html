@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>random quote machine</title>
+	<script src="https://libs.baidu.com/jquery/2.0.0/jquery.js"></script>
+	<meta charset="utf-8" />
+	<style type="text/css">
+	    body{
+	    	background-color: purple;
+	    }
+        #main{
+        	position: absolute;
+        	top: 20%;
+        	left: 30%;
+        	width: 40%;
+        	height: 50%;
+        	display: flex;
+        	flex-flow: column;
+        	background-color: white;
+
+        	justify-content: space-between;
+        }
+        #quote{
+        	display: flex;
+        	flex-flow: column;
+        	align-items: center;
+        	border:3px solid green;
+        	height: 70%;
+        }
+        #quoname{
+        	align-self: flex-end;
+        	background-color: white;
+        }
+        #button{
+        	display: flex;
+        	justify-content: space-between;
+        	margin: 2% 5%;
+        }
+        #tot,#newquote{
+        	background-color: purple;
+        }
+	</style>
+</head>
+<body>
+<div id="main">
+	<div id="quote">
+		<p id="quotext">这是一段名言</p>
+		<p id="quoname">-我是一个名人</p>
+	</div>
+	<div id="button">
+		<div class="bdsharebuttonbox"><a href="#" class="bds_more" data-cmd="more"></a><a href="#" class="bds_qzone" data-cmd="qzone"></a><a href="#" class="bds_tsina" data-cmd="tsina"></a><a href="#" class="bds_tqq" data-cmd="tqq"></a><a href="#" class="bds_renren" data-cmd="renren"></a><a href="#" class="bds_weixin" data-cmd="weixin"></a></div>
+		<button id="newquote">new quoto</button>
+	</div>
+</div>
+<script type="text/javascript">
+	var text1 = ["烟", "倾", "萧", "墨", "歌", "弦", "痴", "泠", "幽", "离", "覆", "寂", "情", "思", "恋", "醉", "浅", "尘", "念", "葬", "负", "梦", "韶", "陌", "落", "琴", "夜", "君","殇"];
+	var text2 = ["朱砂", "韶华", "江南", "烟雨", "迷离", "红尘", "寂寞", "繁华", "风华", "苍老", "红颜", "天下", "彼岸", "浮生", "伊人", "青丝", "白首", "陌上", "微凉", "千年", "倾城", "断弦", "长歌", "悲欢", "沧海", "天涯", "尘缘", "情殇", "忘川", "碧落", "奈何", "指尖", "盛世", "长安", "青鸾", "凤凰", "桃花", "海棠", "红妆", "婆娑", "轻狂", "未央"];
+   
+	var text3 = ["朱砂", "桃花", "落花", "韶华", "天涯", "刹那", "芳华", "年华", "风沙", "清茶", "繁华", "天下", "如画", "琵琶", "鞍马", "麾下", "王霸", "袈裟", "酒家", "喑哑", "竹马", "芳葩", "烟霞", "牵挂", "月华", "无瑕", "孤侠", "情话", "白发", "风雅", "灯花", "造化", "作罢", "西下", "青瓦", "还家"];
+    var text4 = ["倾尽", "敛尽", "流转", "袖手", "凭栏", "相思", "敛衾", "栖身", "坐听", "负长剑", "惹尘埃", "敛风沙", "弃江山", "戏诸侯"];
+	var text5 = ["乱", "殇", "寒", "暖", "醉", "离", "红", "香", "柔", "断", "葬", "梦", "愁", "恨", "迷", "负"];
+	var name1 = ["欧阳", "太史", "端木", "上官", "司马", "东方", "独孤", "南宫", "万俟", "闻人", "夏侯", "诸葛", "尉迟", "公羊", "赫连", "澹台", "皇甫", "宗政", "濮阳", "公冶", "太叔", "申屠", "公孙", "慕容", "仲孙", "钟离", "长孙", "宇文", "司徒", "鲜于", "司空", "闾丘", "子车", "亓官", "司寇", "巫马", "公西", "颛孙", "壤驷", "公良", "漆雕", "乐正", "宰父", "谷梁", "拓跋", "夹谷", "轩辕", "令狐", "段干", "百里", "呼延", "东郭", "南门", "羊舌", "微生", "公户", "公玉", "公仪", "梁丘", "公仲", "公上", "公门", "公山", "公坚", "左丘", "公伯", "西门", "公祖", "第五", "公乘", "贯丘", "公皙", "南荣", "东里", "东宫", "仲长", "子书", "子桑", "即墨", "达奚", "褚师", "吴铭"];
+	var name2 =["神", "仙", "灵", "幻", "狂", "道", "圣", "阴", "阳", "傲", "天", "穹", "绝", "尊", "霸", "古", "逆", "奇", "凌", "云", "啸", "乾", "坤", "朽", "鬼", "妖", "灭", "破", "荒"];
+    //console.log(name1.length);
+	function change(){
+		var i1 = Math.floor(Math.random()*29);
+		var i2 = Math.floor(Math.random()*42);
+		var i3 = Math.floor(Math.random()*36);
+        var i4 = Math.floor(Math.random()*14);
+        var i5 = Math.floor(Math.random()*16);
+        var i6 = Math.floor(Math.random()*82);
+		$("#quotext").html(text1[i1]+text2[i2]+"，"+text3[i3]+text4[i4]+text5[i5]+"。");
+		$("#quoname").html("-"+text3[i4]+"_____"+name1[i6]+name2[i4]+name2[i1]);
+	}
+	document.querySelector("#newquote").onclick=function(){change();};
+	window._bd_share_config={"common":{"bdSnsKey":{},"bdText":"","bdMini":"2","bdPic":"","bdStyle":"0","bdSize":"16"},"share":{},"image":{"viewList":["qzone","tsina","tqq","renren","weixin"],"viewText":"分享到：","viewSize":"16"},"selectShare":{"bdContainerClass":null,"bdSelectMiniList":["qzone","tsina","tqq","renren","weixin"]}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];
+</script>
+</body>
+</html>
+

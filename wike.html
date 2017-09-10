@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>维科</title>
+	<meta charset="utf-8">
+	<style type="text/css">
+    body{
+    	display: flex;
+    	flex-flow: column;
+    	justify-content: center;
+    	align-items: center;
+    	margin-top: 10em;
+    	background-color: gray;
+
+    }
+    #random{
+    	width: 15%;
+    	height:4em;
+    	margin-bottom: 2em;
+    	border-radius: 1em;
+    	border:1px solid black;
+    }
+    input{
+    	width: 20%;
+    	margin-bottom: 2em;
+    	background-color: gray;
+    	border:0.5em solid blue;
+    }
+    a{
+    	text-decoration: none;
+    	color: black;
+    }
+    #random,#searchend,#searchend div{
+    	display: flex;
+    	flex-flow: column;
+    	justify-content: center;
+    	align-items: center;
+    }
+    #searchend div{
+    	align-items: flex-start;
+    	border-radius: 2px;
+    	border:1px solid black;
+    	width: 60%;
+    	margin-bottom: 1em;
+    	padding-left: 3em;
+    }
+
+    #searchend div:hover{
+    	border-left: 0.5em solid lightblue;
+    }
+   
+	</style>
+</head>
+<body>
+<button id="random">
+<a href="http://en.wikipedia.org/wiki/Special:Random" target="_blank">随机获取页面</a></button>
+<input></input>
+<div id="searchend">在搜索框进行搜索</div>
+</body>
+<script type="text/javascript" src="http://code.jquery.com/jquery-latest.min.js"></script>
+<script type="text/javascript">
+	var getButton=document.querySelector("button");
+	var getInput=document.querySelector("input");
+	var searchend=document.querySelector("#searchend");
+	var body=document.querySelector("body");
+    var api ="https://en.wikipedia.org/w/api.php?format=json&action=query&generator=search&gsrnamespace=0&gsrlimit=10&prop=pageimages|extracts&pilimit=max&exintro&explaintext&exsentences=1&exlimit=max&gsrsearch=";
+    console.log(searchend);
+	getInput.onkeypress=function(){
+		if(event.keyCode==13){
+		var search = getInput.value;
+        var url =api + search;
+        $.ajax({
+        	dataType:"JSONP",  
+        jsonp:"callback",//请求自动带上callback参数，callback值为jsonpCallback的值  
+        jsonpCallback:"login",//接口服务器应该返回字符串数据格式：login(JSON数据)  
+        type:"post",  
+        url:url,//接口服务器地址  
+        data:{},//请求数据  
+        success:function(response){  
+            //成功执行  
+            //change(response);
+            console.log(response); 
+            searchend.innerHTML="";
+            topush(response.query.pages);
+            body.style.marginTop = "2em"; 
+            console.log(body.style);
+
+        },  
+        error:function(e){  
+            //失败执行  
+            console.log("error");  
+        }  
+    });
+	}};
+	function topush(pages){
+		for(i in pages){
+			console.log()
+			var div= document.createElement("div");
+			var a=document.createElement("a");
+			var h2 =document.createElement("h2");
+			var p =document.createElement("p");
+			a.href="https://en.wikipedia.org/?curid="+pages[i].pageid;
+			a.target="_blank";
+			console.log(a);
+			h2.innerText=pages[i].title;
+			p.innerText=pages[i].extract;
+            a.appendChild(h2);
+            a.appendChild(p);
+            div.appendChild(a);
+            searchend.appendChild(div);
+		}
+	}
+</script>
+</html>

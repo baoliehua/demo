@@ -1,0 +1,195 @@
+body{
+	display: flex;
+	flex-direction: column;
+	flex:1;
+ 
+}
+/*header*/
+nav{
+    display: flex;
+    border: 1px black solid;
+    justify-content: space-between;
+}
+
+nav ul{
+    border: 1px black solid;
+    display: flex;
+    justify-content: space-around;
+    align-self: center;
+    margin: 0px;
+}
+
+nav li{
+	margin: 10px;
+}
+/*body*/
+/*c1*/
+.c1{
+	height: 20em;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	background:gray;
+}
+/*c2*/
+.c2{
+	display: flex;
+	justify-content: space-around;
+}
+
+.c2 section{
+	margin: 10px;
+	display: flex;
+	flex-flow: column;
+	align-items: center;
+}
+
+/*c3*/
+
+.c3-1{
+	background-color: #c0c0c0;
+    display: flex;
+    flex-flow: column;
+    align-items: center;
+}
+
+.c3-2{
+	background-image: url(img-rw7/c4-1.png);
+	background-size: cover;
+	height: 200px;
+	display: flex;
+	flex-flow: column;
+	align-items: center;
+}
+
+/*c4*/
+
+.c4{
+	display: flex;
+	justify-content: center;
+	background-color: #c0c0c0;
+}
+
+.c4 section{
+	margin: 20px;
+}
+
+.c4-1,.c4-3{
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+}
+
+.c4-2,.c4-4{
+	display: flex;
+	flex-direction: column-reverse;
+	align-items: center;
+}
+
+/*c5*/
+
+.c5{
+	display: flex;
+	flex-direction: column;
+}
+
+.c5-1{
+	display: flex;
+	flex-direction: row;
+	flex: 1;
+}
+
+.c5-1-1{
+	flex: 0 0 66.6666%;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	background-color: green;
+}
+
+.c5-1-2{
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+}
+
+.c5-2{
+	display: flex;
+	flex: 1;
+	flex: 1 1 33.3333%;
+	justify-content: space-around;
+}
+
+.c5-2 section{
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	border: 1px solid black;
+	flex: 1;
+}
+
+.c5-2-1{
+	background-color: red;
+}
+
+/*c6*/
+.c6{
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+}
+
+/*c7*/
+.c7{
+	display: flex;
+	flex-direction: row;
+	flex: 1
+}
+
+.c7-1{
+	display: flex;
+	flex-direction: column;
+	align-items: flex-start;
+	flex:0 0 40%; 
+}
+
+.c7-2{
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+	flex: 1;
+}
+
+.c7-2 input{
+    height: 3em;
+
+}
+.c7-2 textarea{
+	height: 5em;
+	width: 100%;
+}
+
+
+/*footer*/
+footer{
+	display: flex;
+	flex-direction: column;
+	flex: 1;
+}
+
+.f1{
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	background-color: gray;
+}
+
+.f2{
+	display: flex;
+	justify-content: center;
+	background-color: black;
+	color: white;
+}

@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>rw3-1</title>
+	<meta charset="utf-8">
+	<style type="text/css">
+        a{
+        	display: inline-block;
+        	background-color: lightblue;
+        	border: 1px solid black;
+
+        }
+	</style>
+	
+</head>
+<body>
+    <form>
+    	<label>名称</label>
+    	<a id="b1">验证</a>
+    	<p id="c1">必填</p>
+    </form>
+    
+    <script type="text/javascript">
+    	var b1 = document.getElementById("b1");
+    	var c1 = document.getElementById("c1");
+    	b1.onclick =function(){
+                    c1.innerHTML="必填，长度为4~16个字符";
+    	};
+    </script>
+</body>
+</html>

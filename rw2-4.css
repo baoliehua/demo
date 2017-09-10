@@ -1,0 +1,9 @@
+#item li{
+	display: inline-flex;
+	flex-direction: row;
+	justify-content: space-between;
+	background-color:red;
+	margin-left: 10px; 
+	
+    
+}

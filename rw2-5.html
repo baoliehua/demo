@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>rw2-4</title>
+	<meta charset="utf-8">
+	<link rel="stylesheet" type="text/css" href="rw2-4.css">
+</head>
+<body>
+
+    <div>
+        <input id="in"></input>
+        <button id="leftin">左侧进</button>
+        <button id="rightin">右侧进</button>
+        <button id="leftout">左侧出</button>
+        <button id="rightout">右侧出</button>
+        <button id="sort">排序</button>
+    </div>
+    <div id="item">
+    </div>
+<script type="text/javascript">
+	var items = new Array;
+	function li(){
+		var li_input = document.getElementById('in');
+        if (li_input.value>=10 && li_input.value<=100) {
+        	if (items.length<60) {items.splice(0,0,li_input.value);
+        		}
+        	else {alert("limit length 60!")}
+        	
+        }
+		
+	}
+	function ri(){
+		var right_input = document.getElementById("in");
+        if (right_input.value>=10 && right_input.value<=100) {
+        	if (items.length<60) {items.push(right_input.value);}
+        	else{alert("limit length 60!")}
+        	
+        }
+		
+	}
+	function lo(){     
+		items.splice(0,1);
+	}
+	function ro(){
+		items.pop();
+
+	}
+	function wi(){
+		var div = document.createElement("div"); 
+		var item = document.getElementById("item");
+		for (var i = 0; i < items.length; i++) {
+			var wi = document.createElement("li");
+			//var txt = document.createTextNode(items[i]);
+			//wi.appendChild(txt);
+		    //li.setAttribute = ('height','100px');
+			//li.setAttribute = ('width',items[i]);
+			//li.style.width = '20px';
+			wi.style.width = '20px';
+			var itemsValue = items[i] + "px";
+			wi.style.height = itemsValue;
+			//alert(itemsValue);
+	        wi.style.backgroundColor = 'bule';
+			div.appendChild(wi);
+
+		}
+		//div.style.width = '100px';
+	    //div.style.height = '100px';
+	    //div.style.backgroundColor = 'red';
+		item.replaceChild(div,item.childNodes[0]);
+
+
+	}
+	function btn_clickli(){
+		var btn_clickli = document.getElementById("leftin");
+		var btn_clickri = document.getElementById("rightin");
+		var btn_clicklo = document.getElementById("leftout");
+		var btn_clickro = document.getElementById("rightout");
+		var btn_sort = document.getElementById("sort");
+		var btn_click = [btn_clickli.onclick,btn_clickri.onclick,btn_clicklo.onclick,btn_clickro.onclick];
+        btn_clickli.onclick = function(){
+        	li();
+        	wi();
+	    }
+	    btn_clickri.onclick = function(){
+        	ri();
+        	wi();
+	    }
+	    btn_clicklo.onclick = function(){
+        	lo();
+        	
+        	wi();
+	    }
+	    btn_clickro.onclick = function(){
+        	ro();
+        	wi();
+
+	    }
+	    btn_sort.onclick = function(){
+	    	items.sort();
+	    	wi();
+	    	/*for (var i = 0; i < items.length; i++) {
+	    		for (var j = 0; i < items.length-i; j++) {
+	    		    if (items[j]>items[j+1]) {
+	    		    	var change = items[j];
+	    		    	items[j] = items[j+1];
+	    		    	items[j+1] = change;
+	    		    }
+	    		}
+	        }
+            wi();*/
+        }
+        
+    }
+	btn_clickli();
+	/*function setCss(){
+		var getC = document.getElementById("item");
+	    getC.style.width = '100px';
+	    getC.style.height = '100px';
+	    getC.style.backgroundColor = 'red';
+
+	}
+	setCss();*/
+</script>
+
+</body>
+</html>

@@ -1,0 +1,137 @@
+var sign = document.querySelector("#sign");
+var inpu =1;
+var resign=0;
+var button =document.querySelectorAll(".button");
+//console.log(inpu);
+button[0].onclick=function(){
+	sign.innerText="";
+};
+button[1].onclick=function(){
+	if(!inpu){
+		sign.innerText=resign;
+		console.log(resign);
+		inpu=1;
+	}else{
+	var int = sign.innerText;
+	int=int.slice(0,-1);
+    sign.innerText=int;
+    }
+};
+button[2].onclick=function(){
+	if(!inpu){
+		inpu=1;
+	}
+    sign.innerText+="%";
+};
+button[3].onclick=function(){
+	if(!inpu){
+		inpu=1;
+	}
+    sign.innerText+="/";
+};
+button[4].onclick=function(){
+	if(!inpu){
+		inpu=1;
+	}
+    sign.innerText+="7";
+};
+button[5].onclick=function(){
+    if(!inpu){
+		inpu=1;
+	}
+    sign.innerText+="8";
+};
+button[6].onclick=function(){
+    if(!inpu){
+		inpu=1;
+	}
+    sign.innerText+="9";
+};
+button[7].onclick=function(){
+    if(!inpu){
+		inpu=1;
+	}
+    sign.innerText+="*";
+};
+button[8].onclick=function(){
+    if(!inpu){
+		inpu=1;
+	}
+    sign.innerText+="4";
+};
+button[9].onclick=function(){
+    if(!inpu){
+		inpu=1;
+	}
+    sign.innerText+="5";
+};
+button[10].onclick=function(){
+    if(!inpu){
+		inpu=1;
+	}
+    sign.innerText+="6";
+};
+button[11].onclick=function(){
+    if(!inpu){
+		inpu=1;
+	}
+    sign.innerText+="-";
+};
+button[12].onclick=function(){
+    if(!inpu){
+		inpu=1;
+	}
+    sign.innerText+="1";
+};
+button[13].onclick=function(){
+    if(!inpu){
+		inpu=1;
+	}
+    sign.innerText+="2";
+};
+button[14].onclick=function(){
+    if(!inpu){
+		inpu=1;
+	}
+    sign.innerText+="3";
+};
+button[15].onclick=function(){
+    if(!inpu){
+		inpu=1;
+	}
+    sign.innerText+="+";
+};
+button[16].onclick=function(){
+    if(!inpu){
+		inpu=1;
+	}
+    sign.innerText+=".";
+};
+button[17].onclick=function(){
+    if(!inpu){
+		inpu=1;
+	}
+    sign.innerText+="0";
+};
+button[19].onclick=function(){
+	
+	if(sum(sign.innerText)){
+    resign=sign.innerText;
+    console.log(sign.innerText);
+    sign.innerText=eval(sign.innerText);
+    
+    inpu=0;
+    }
+};
+function sum(intext){
+    try{
+    	if(eval(intext)!==undefined){
+    		
+    	    return 1;
+    	}else{
+    		return 0;
+    	}
+    }catch(SyntaxError){
+        return 0;
+    }
+}

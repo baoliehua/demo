@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>game1.1</title>
+	<meta charset="utf-8">
+	<style type="text/css">
+	    div{
+	    	width: 100px;
+	    	height: 100px;
+	    	background-color: black;
+	    	transition: 1s;
+	    }
+	    button{
+	    	background-color: gray;
+	    }
+	    #color{
+            display: inline-block;
+	    }
+        #c1{
+        	background-color: red;
+        }
+        #c2{
+        	background-color: green;
+        }
+        #c3{
+        	background-color: black;
+        }
+	</style>
+</head>
+<body>
+    <ul id="color">
+    	<li id="c1">红</li>
+    	<li id="c2">绿</li>
+    	<li id="c3">黑</li>
+    </ul>
+    <ul id="change">
+    	<li><button>变高</button></li>
+    	<li><button>变宽</button></li>
+    	<li><button>变色</button></li>
+    	<li><button>隐藏</button></li>
+    	<li><button>重置</button></li>
+    </ul>
+    <input></input>
+    <input></input>
+    <button>传递</button>
+
+    <div></div>
+    <script type="text/javascript">
+    	var getdiv = document.querySelector("div");
+    	//alert(getdiv);
+    	var getbutton = document.getElementsByTagName("button");
+    	var getli = document.querySelectorAll("#color li");
+    	var getbody = document.querySelector("body");
+    	var getchange = document.querySelector("#change");
+    	alert(getli);
+    	getli[0].onclick = function(){
+            for (var i = 0; i < getbutton.length; i++) {
+            	getbutton[i].style.backgroundColor = "red";
+            }
+            getbody.style.backgroundColor = "red";
+    	}; 
+    	getli[1].onclick = function(){
+    		for (var i = 0; i < getbutton.length; i++) {
+            	getbutton[i].style.backgroundColor = "green";
+            }
+            getbody.style.backgroundColor = "lightgreen";
+    	};
+    	getli[2].onclick = function(){
+    		for (var i = 0; i < getbutton.length; i++) {
+            	getbutton[i].style.backgroundColor = "yellow";
+            }
+            getbody.style.backgroundColor = "gray";
+    	} ;
+    	getbutton[0].onclick = function(){
+            getdiv.style.height = "200px";
+    	};
+    	getbutton[1].onclick = function(){
+            getdiv.style.width = "200px";
+    	};
+    	getbutton[2].onclick = function(){
+            getdiv.style.backgroundColor = "red";
+    	};
+    	getbutton[3].onclick = function(){
+            getdiv.style.visibility = "hidden";
+            getdiv.style.opacity = "0";
+
+    	};
+    	getbutton[4].onclick = function(){
+            getdiv.style.height = "100px";
+            getdiv.style.backgroundColor = "black";
+            getdiv.style.width = "100px";
+            getdiv.style.visibility = "visible";
+            getdiv.style.opacity = "1";
+
+    	}
+    	var getinp = document.querySelectorAll("input");
+    	getbutton[5].onclick = function(){
+    		alert(getinp[0].value);
+    		alert(getinp[1].value);
+    	}
+    </script>
+</body>
+</html>

@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>game2</title>
+	<meta charset="utf-8">
+	<style type="text/css">
+		#cover{
+			display: none;
+			position: fixed;
+			width:100%;
+			height:100%;
+			top: 0;
+			left: 0;
+			background-color:gray;
+		}
+		#xg{
+			height: 100px;
+			background-color: black;
+		}
+		#content button{
+			display: none;
+		}
+	</style>
+</head>
+<body>
+<p>新华网北京5月29日电(新华社记者)从<s>三聚氰胺</s>到瘦肉精，从染色馒头到毒豆芽，在食品中添加非食用物质和滥用食品添加剂已成为百姓餐桌上突出的"不安全因素"。近期以来，从北京到广东，从浙江到宁夏，一场打击食品非法添加的"风暴"席卷全国。</p>
+<input></input>
+<button>求和</button>
+<button id="open">弹出</button>
+<div id="cover">
+    <p>弹出内容</p>
+	<button id="close">关闭</button>
+</div>
+<label>属性名：</label>
+<input id="name"></input>
+<label>属性值：</label>
+<input id="value"></input>
+<button id="qd">确定</button>
+<button id="cz">重置</button>
+<div id="xg">效果</div>
+<div id="card">
+	<div id="table">
+		<ul>
+			<li>suprise</li>
+			<li>to</li>
+			<li>you</li>
+		</ul>
+	</div>
+	<div id="content">
+		<button>I</button>
+		<button>love</button>
+		<button>you!</button>
+	</div>
+</div>
+<script type="text/javascript">
+	var p = document.querySelector("p");
+	p.onclick = function () {
+		// body...
+		alert(p.innerHTML);
+	}
+	var inp = document.querySelector("input");
+	var butn = document.querySelector("button");
+	
+	var str="How are you doing today?";
+    
+	butn.onclick = function(){
+		var get = inp.value;
+		var n=get.split(",");
+		var x = 0;
+		for(var i=0;i<n.length;i++){
+        x+=Number(n[i]);
+        }
+        alert(x);
+
+    
+	}
+	var open = document.querySelector("#open");
+	var close = document.querySelector("#close");
+	var cover = document.querySelector("#cover");
+    open.onclick=function(){
+        cover.style.display = "block";
+    };
+    close.onclick=function(){
+        cover.style.display = "none";
+    };
+    var xg = document.querySelector("#xg");
+    var qd = document.querySelector("#qd");
+    qd.onclick = function () {
+    	// body...
+    	var name = document.querySelector("#name");
+    	var value = document.querySelector("#value");
+        change(name.value,value.value);
+    };
+    function change(name,value){
+        xg.style[name]=value; 
+        //console.log(typeof(name));
+        console.log(xg.style.name);
+
+    }
+    var table = document.querySelectorAll("#table li");
+    var content = document.querySelectorAll("#content button");
+    console.log(table[0]);
+    table[0].onclick = function(){
+        changedisplay(0);
+    };
+    table[1].onclick = function(){
+        changedisplay(1);
+    };
+    table[2].onclick = function(){
+        changedisplay(2);
+    };
+    
+   
+    function changedisplay(j){
+    	for (var i = 0; i < content.length; i++) {
+    		content[i].style.display = "none";
+    	}
+    	content[j].style.display ="block";
+
+    }
+</script>
+</body>
+</html>

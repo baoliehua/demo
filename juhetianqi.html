@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>聚合天气</title>
+	<meta charset="utf-8">
+	<style type="text/css">
+        body{
+        	display: flex;
+        	flex-flow: column;
+        	justify-content: center;
+        	align-items: center;
+        }
+        header,section{
+        	display: flex;
+        	justify-content: center;
+        	align-items: center;
+        	border-bottom: 1px solid gray;
+        	width: 90%;
+        }
+        section{
+        	flex-flow: column;
+        }
+        p{
+        	font-size: 1em;
+        	font-weight: normal;
+        	property:;
+        }
+	</style>
+</head>
+<body>
+<header>
+	<img src="https://www.juhe.cn/themes/v5/public/images/loginlogo.png">
+	<h1>天气应用</h1>
+</header>
+<section id="today">
+	<h2>今日天气</h2>
+	<p>湿度：</p>
+	<p>穿衣指数：</p>
+	<p>洗车指数：</p>
+	<p>旅游指数：</p>
+	<p>锻炼指数：</p>
+	<p>紫外线指数：</p>
+</section>
+<section id="nextweek">
+	<h2>未来六日天气</h2>
+</section>
+<script type="text/javascript" src="http://code.jquery.com/jquery-latest.min.js"></script>
+<script type="text/javascript" >
+	var url="http://v.juhe.cn/weather/ip?format=2&key=";
+	var key="4daa0a4cdd2bb445d5dd71f5c4872ecf";
+	var ip="&ip="+"125.66.90.179";
+	var geturl = url+key+ip;
+	//var req=new XMLHttpRequest();
+	//req.open("GET","https://freecodecamp.cn/baoliehua",false);
+	//var k=req.send();
+	var getp=$("p");
+	//console.log(k);
+
+     $.ajax({  
+        dataType:"JSONP",  
+        jsonp:"callback",//请求自动带上callback参数，callback值为jsonpCallback的值  
+        jsonpCallback:"login",//接口服务器应该返回字符串数据格式：login(JSON数据)  
+        type:"post",  
+        url:geturl,//接口服务器地址  
+        data:{},//请求数据  
+        success:function(response){  
+            //成功执行  
+            change(response);
+            console.log(response);  
+        },  
+        error:function(e){  
+            //失败执行  
+            alert(e.status+','+ e.statusText);  
+        }  
+    })  
+
+
+    function change(data){
+    getp[0].innerText+=data.result.sk.humidity;
+    getp[1].innerText+=data.result.today["dressing_advice"];
+    getp[2].innerText+=data.result.today["wash_index"];
+    getp[3].innerText+=data.result.today["travel_index"];
+    getp[4].innerText+=data.result.today["exercise_index"];
+    getp[5].innerText+=data.result.today["uv_index"];
+    $("h2")[0].innerText+="("+data.result.today["week"]+")";
+    next(data);
+    }
+    function next(data){
+    var getnext=document.querySelector("#nextweek");
+    var frag=document.createDocumentFragment();
+    for (var i = 1; i < 7; i++) {
+    	var newday =document.createElement("p");
+    	newday.innerText=data.result.future[i]["week"]+":"+data.result.future[i]["weather"];
+    	frag.appendChild(newday);
+    }
+    console.log(getnext);
+    getnext.appendChild(frag);
+    }
+</script>
+</body>
+</html>

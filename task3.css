@@ -1,0 +1,46 @@
+div{
+	border:2px blue;
+}
+.left{
+    position: relative;
+    float: left;
+	padding: 20px;
+	width: 200px;
+	height: 120px;
+	padding: 10px 10px;
+	background-color: red;
+}
+
+.middle{
+	float: left;
+	position: relative;
+	width: 300px;
+	height: 100px;
+}
+
+.right{
+	float: right;
+	position: fixed;
+	right: 50px;
+
+}
+
+img{
+	display: block;
+	margin: 20px;
+	width: 80px;
+	height: 80px;
+}
+
+.left.p{
+    position:absolute;
+	right:100px;
+}
+
+
+.right.img{
+	float: right;
+}
+/*body {background-image:url(/i/eg_bg_04.gif);}
+background-repeat: repeat
+background-repeat: repeat-y*/

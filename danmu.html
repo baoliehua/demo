@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>弹幕</title>
+	<meta charset="utf-8">
+	<style type="text/css">
+        body{
+        	display: flex;
+        	flex-flow: column;
+        	justify-content: center;
+        	align-items: center;
+        }
+        #screen{
+        	width: 80%;
+        	height: 20em;
+        	border:1px solid gray;
+        	margin-bottom: 2em;
+
+        }
+        #set{
+        	display: flex;
+        	flex-flow: column;
+        	justify-content: center;
+        	align-items: center;
+        	width: 40%;
+        }
+        input{
+        	width: 90%;
+        	height: 2em;
+        	margin-bottom: 1em;
+
+        }
+        #button{
+        	display: flex;
+        	justify-content: space-around;
+        	width: 80%;
+        	height: 3em;
+
+        }
+        #send{
+        	border:1px solid red;
+        	color: red;
+        	width: 40%;
+        	height: 80%;
+        }
+        #clear{
+        	color: gray;
+        	border:1px solid gray;
+        	margin-left: 2em;
+        	width: 40%;
+        	height: 80%;
+
+        }
+        #send,#clear{
+        	display: flex;
+        	justify-content: center;
+        	align-items: center;
+        	border-radius: 2em;
+        	background-color: lightblue;
+        }
+        #send:active,#clear:active{
+            border:1px solid white;
+        }
+
+	</style>
+</head>
+<body>
+<div id="screen">
+	
+</div>
+<div id="set">
+	<input placeholder="说点什么？" ></input>
+	<div id="button">
+		<div id="send">发射</div>
+		<div id="clear">清屏</div>
+	</div>
+</div>
+<script type="text/javascript">
+	var input =document.querySelector("input");
+	var send =document.querySelector("#send");
+	var screen =document.querySelector("#screen");
+	var clear =document.querySelector("#clear");
+	function creat(){
+        var newdm=document.createElement("p");
+        newdm.innerText=input.value;
+        screen.appendChild(newdm);
+        var n=1400;
+        newdm.style.marginLeft=n+"px";
+        var color=["red","blue","green","yellow"];
+        var top=["4em","8em","12em","16em"]
+        var rad=parseInt((Math.random())*4);
+        newdm.style.color=color[rad];
+        newdm.style.marginTop=top[rad];
+        var k=setInterval(function(){
+        newdm.style.marginLeft=n+"px";
+        newdm.style.position="fixed";
+        	n--;
+        	if(n<-10){
+        		
+        		screen.removeChild(newdm);
+        		clearInterval(k);
+        	}
+        },10);
+	}
+	function resend(){
+		setInterval(creat,2000);
+
+	}
+	function reclear(){
+		screen.innerHtml="";
+		console.log(screen.innerHtml);
+
+	}
+	send.addEventListener("click",resend);
+	clear.addEventListener("click",reclear);
+</script>
+</body>
+</html>

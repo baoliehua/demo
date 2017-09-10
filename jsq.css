@@ -1,0 +1,52 @@
+body{
+	margin: 0;
+	padding: 0;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+#main{
+	background-color: orange;
+	width: 30%;
+	margin-top: 5em;
+	height: 30em;
+	display: flex;
+	flex-flow: column;
+	justify-content: center;
+    align-items: center;
+	border-radius: 2em;
+}
+
+#sign{
+	background-color: gray;
+	width: 85%;
+	height: 10%;
+	margin-bottom: 2em;
+	display: flex;
+	justify-content: flex-end;
+	align-items: center;
+}
+#input{
+	width: 85%;
+	height: 70%;
+	display: flex;
+	flex-flow: row wrap;
+	justify-content: space-around;
+	align-items: center;
+
+
+}
+.button{
+	width: 23%;
+	height: 18%;
+	background-color: gray;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	border:1px solid gray;
+	border-radius: 0.5em;
+}
+
+.button:active{
+	border-color: white;
+}
