@@ -14,7 +14,7 @@
     #header{
         flex-flow: row;
         border:1px solid black;
-        width: 50%;
+        width: 40em;
         height: 5em;
         justify-content: space-between;
         background-color: gray;
@@ -27,11 +27,22 @@
 
     }
     #filter{
-    	width: 12%;
+        height: 5em;
+        display: flex;
+        flex-flow: column;
+        align-items: flex-end;
+    }
+    #filter p{
+        width: 4em;
+    }
+    #online p,#offline p{
+        display: none;
     }
     #filter>div{
+        height: 1.5em;
     	display: flex;
     	flex-flow: row;
+        justify-content: space-between;
     	align-items: center;
     	margin-bottom: 2px;
     	background-color: white; 
@@ -40,132 +51,165 @@
     .circle{
     	border-radius: 50%;
     	border:2px solid black;
+        margin-left:0.3em; 
     	width: 0.6em;
     	height:0.6em;
     }
-    .append{
+    #channel div{
     	display: flex;
     	flex-flow: row;
     	justify-content: flex-start;
     	align-items: center;
-    	width: 50%;
     	border:1px solid black;
     	background-color: lightblue; 
     }
-    .append a{
-    	width: 30%;
-    	margin-left: 20%;
+    #channel a{
+    	width: 8em;
+        margin-left: 2em;
     	text-decoration: none;
     	color: black;
     }
-    .append img{
+    #channel img{
     	width: 3em;
     	height: 3em;
     	border-radius: 50%;
     	background-color: black;
     }
+    #channel{
+        display: flex;
+        flex-flow: column;
+        width: 40em;
+        border:1px solid black;
+    }
+    
+    #channel div.online{
+        background-color: lightgreen;
+    }
+    #channel p{
+        display: flex;
+        justify-content: center;
+        width: 25em;
+    }
+
 	</style>
 </head>
 <body>
     <div id="header">
     	<div id="title"><h1>TWITCH STREAMERS</h1></div>
     	<div id="filter">
-    		<div id="all" ><div class="circle"></div>all</div>
-    		<div id="online"><div class="circle"></div>online</div>
-    		<div id="offline"><div class="circle"></div>offline</div>
+    		<div id="all" ><div class="circle"></div><p>all</p></div>
+    		<div id="online"><div class="circle"></div><p >online</p></div>
+    		<div id="offline"><div class="circle"></div><p>offline</p></div>
     	</div>
     </div>
-    <script type="text/javascript" src="http://code.jquery.com/jquery-latest.min.js"></script>
+    <div id="channel">
+        
+    </div>
+    <script type="text/javascript" src="http://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
     <script type="text/javascript">
         var channel={
-        channelarr:["linfufu","dssawawd","hearthstonezhtw", "storbeck", "terakilobyte"],
+        channelarr:["linfufu","dssawawd","hearthstonezhtw", "storbeck", "terakilobyte","kyo1984123","isbluer"],
         clientId:'c8a3wkkb56yqjhlcui7tcfyjvs65dy6',
-        geturl:function(n){
-        	return 'https://api.twitch.tv/kraken/streams/' + channel.channelarr[n] + '?client_id=' + channel.clientId;
-        }
+        geturl:function(type,channel){
+        	return 'https://wind-bow.gomix.me/twitch-api/' + type + '/' + channel + '?callback=?';
+            //用界面提供的api不太好用，借用模板的api
+        },
+        
     }
-       
-        function geturl(channel){
-             var urlarr=[];
-             console.log(channel.channelarr.length);
-             for (var i = 0; i < channel.channelarr.length; i++) {
-
-             	urlarr.push(channel.geturl(i));
-             }
-             return urlarr;
-        }
-        function getdata(urlarr){
-        	channel.dataarr=[];
-            for (var i = 0; i < urlarr.length; i++) {
-
-              	$.getJSON(urlarr[i], function(data) {
-              		channel.dataarr.push(data);
-                    console.log(channel.dataarr);
-                    //buildonline(data);
+     bulit(channel.channelarr);  
+       function bulit(channelarr){
+           for (var i = 0; i < channelarr.length; i++) {
+               getdata(channelarr[i]);
+           }
+       }
+        function getdata(channel2){
+              	$.getJSON(channel.geturl("streams",channel2), function(data) {
+                    buildone(data);
+                    $.getJSON(channel.geturl("channels",channel2),function(data){
+                         buildtwo(data);
+                    })
                 });
-            }
-
-        }
-        function build(data){
-            for (var i = 0; i < data.length; i++) {
-            	if(data[i].stream){
-            	buildone(data[i]);
-                }
-            }
-            for (var i = 0; i < data.length; i++) {
-            	if(!data[i].stream){
-            	buildone(data[i]);
-                }
-            }
-        }
-        function buildone(data){
-        	var body=document.body;
-        	var getall=document.getElementsByTagName("append");
-            var div=document.createElement("div");
+              }
+              
+        function buildtwo(data){
+            var reg=/\"(\w+)\"$/;
+            reg=status.aName=data.name?data.name:reg.exec(data.message)[1];
+            var div=document.getElementById(reg);
             var img=document.createElement("img");
             var a=document.createElement("a");
             var p=document.createElement("p");
-            div.setAttribute("class","append");
-            console.log(div);
-            img.setAttribute("src",data.stream?data.stream.preview.small:"data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDAAgGBgcGBQgHBwcJCQgKDBQNDAsLDBkSEw8UHRofHh0aHBwgJC4nICIsIxwcKDcpLDAxNDQ0Hyc5PTgyPC4zNDL/2wBDAQkJCQwLDBgNDRgyIRwhMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjL/wAARCADIAMgDASIAAhEBAxEB/8QAHwAAAQUBAQEBAQEAAAAAAAAAAAECAwQFBgcICQoL/8QAtRAAAgEDAwIEAwUFBAQAAAF9AQIDAAQRBRIhMUEGE1FhByJxFDKBkaEII0KxwRVS0fAkM2JyggkKFhcYGRolJicoKSo0NTY3ODk6Q0RFRkdISUpTVFVWV1hZWmNkZWZnaGlqc3R1dnd4eXqDhIWGh4iJipKTlJWWl5iZmqKjpKWmp6ipqrKztLW2t7i5usLDxMXGx8jJytLT1NXW19jZ2uHi4+Tl5ufo6erx8vP09fb3+Pn6/8QAHwEAAwEBAQEBAQEBAQAAAAAAAAECAwQFBgcICQoL/8QAtREAAgECBAQDBAcFBAQAAQJ3AAECAxEEBSExBhJBUQdhcRMiMoEIFEKRobHBCSMzUvAVYnLRChYkNOEl8RcYGRomJygpKjU2Nzg5OkNERUZHSElKU1RVVldYWVpjZGVmZ2hpanN0dXZ3eHl6goOEhYaHiImKkpOUlZaXmJmaoqOkpaanqKmqsrO0tba3uLm6wsPExcbHyMnK0tPU1dbX2Nna4uPk5ebn6Onq8vP09fb3+Pn6/9oADAMBAAIRAxEAPwD0WiiioLCiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKbLIkETSyuscajLO7bQo9yarWGp2OqRPLYXkF1GjbGaFwwDenFAFuiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACij8KR3SOM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");
-            p.innerText=data.stream?data.stream.channel.status:"offline";
-            a.setAttribute("target","_blank");
-            var reg=/\w+$/;
-            a.innerText=reg.exec(data["_links"].self);
-            a.setAttribute("href","https://www.twitch.tv/"+a.innerText);
-
-            console.log(a);
-            div.appendChild(img);
+           a.setAttribute("href",data.url?data.url:"");
+           a.setAttribute("target","_blank");
+           a.innerText=reg;
+           img.setAttribute("src",data.logo?data.logo:"https://dummyimage.com/50x50/ecf0e7/5c5457.jpg&text=offline")
+           p.innerText=div.getAttribute("class")==="online"?data.game+":"+data.status:"offline";
+           
+           if (!data.url) {
+               p.innerText="Account Closed!";
+           }
+           div.appendChild(img);
             div.appendChild(a);
             div.appendChild(p);
+        }
+        function buildone(data){
+        	
+            var reg=/\w+$/;
+            var div=document.createElement("div");
+            div.setAttribute("id",reg.exec(data["_links"].self));
+
             if(data.stream){
-                div.setAttribute("class","append online");
-                if(getall.length!==0){
-                	insertBefore(div,getall[0])
-                }else{
-                	body.appendChild(div);
-                }
+                div.setAttribute("class","online");
+                $("#channel").prepend(div);
             }else{
-                div.setAttribute("class","append offline");
-                body.appendChild(div);
+                div.setAttribute("class","offline");
+                $("#channel").append(div);
+
             }
         }
-         getdata(geturl(channel));
-         setTimeout(function(){
-         	build(channel.dataarr);
-         },1000);
+         
         $("#all").click(function(){
-        	$(".append").show();
+        	$("#channel div").show("slow");
+            $("#all p").show();
+            $("#online p").hide();
+            $("#offline p").hide();
         });
         $("#online").click(function(){
-        	$(".online").show();
-        	$(".offline").hide();
+        	$(".online").show("slow");
+        	$(".offline").hide("slow");
+            $("#online p").show();
+            $("#all p").hide();
+            $("#offline p").hide();
+
         });
         $("#offline").click(function(){
-        	$(".offline").show();
-        	$(".online").hide();
+        	$(".offline").show("slow");
+        	$(".online").hide("slow");
+            $("#offline p").show();
+            $("#all p").hide();
+            $("#online p").hide();
+
         });
-        //console.log(alldata);
+        $("#all").hover(function(){
+            $("#all p").show();
+        },function(){
+            if($("#online p").css("display")!=="none"||$("#offline p").css("display")!=="none"){
+            $("#all p").hide();
+        }
+        });
+        $("#online").hover(function(){
+            $("#online p").show();
+        },function(){
+            if($("#all p").css("display")!=="none"||$("#offline p").css("display")!=="none"){
+            $("#online p").hide();
+        }
+        });
+        $("#offline").hover(function(){
+            $("#offline p").show();
+        },function(){
+            if($("#online p").css("display")!=="none"||$("#all p").css("display")!=="none"){
+            $("#offline p").hide();
+        }
+        });
     </script>
 </body>
 </html>

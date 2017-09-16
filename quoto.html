@@ -6,7 +6,7 @@
 	<meta charset="utf-8" />
 	<style type="text/css">
 	    body{
-	    	background-color: purple;
+	    	background-color: gray;
 	    }
         #main{
         	position: absolute;
@@ -17,28 +17,37 @@
         	display: flex;
         	flex-flow: column;
         	background-color: white;
-
         	justify-content: space-between;
+            border-radius: 1em;
+            height: 13em;
         }
         #quote{
         	display: flex;
         	flex-flow: column;
         	align-items: center;
-        	border:3px solid green;
         	height: 70%;
+            height: 10em;
+        }
+        #quotext{
+            font-size: 2em;
+            height: 8em;
         }
         #quoname{
         	align-self: flex-end;
         	background-color: white;
+            margin-right: 1em;
         }
         #button{
         	display: flex;
         	justify-content: space-between;
         	margin: 2% 5%;
         }
-        #tot,#newquote{
-        	background-color: purple;
+        button{
+            color: white;
+            background-color: gray;
+            border-radius: 0.4em;
         }
+        
 	</style>
 </head>
 <body>
@@ -48,8 +57,8 @@
 		<p id="quoname">-我是一个名人</p>
 	</div>
 	<div id="button">
-		<div class="bdsharebuttonbox"><a href="#" class="bds_more" data-cmd="more"></a><a href="#" class="bds_qzone" data-cmd="qzone"></a><a href="#" class="bds_tsina" data-cmd="tsina"></a><a href="#" class="bds_tqq" data-cmd="tqq"></a><a href="#" class="bds_renren" data-cmd="renren"></a><a href="#" class="bds_weixin" data-cmd="weixin"></a></div>
-		<button id="newquote">new quoto</button>
+		<button id="share">分享到微博</button>
+		<button id="newquote">重新生成</button>
 	</div>
 </div>
 <script type="text/javascript">
@@ -61,6 +70,7 @@
 	var text5 = ["乱", "殇", "寒", "暖", "醉", "离", "红", "香", "柔", "断", "葬", "梦", "愁", "恨", "迷", "负"];
 	var name1 = ["欧阳", "太史", "端木", "上官", "司马", "东方", "独孤", "南宫", "万俟", "闻人", "夏侯", "诸葛", "尉迟", "公羊", "赫连", "澹台", "皇甫", "宗政", "濮阳", "公冶", "太叔", "申屠", "公孙", "慕容", "仲孙", "钟离", "长孙", "宇文", "司徒", "鲜于", "司空", "闾丘", "子车", "亓官", "司寇", "巫马", "公西", "颛孙", "壤驷", "公良", "漆雕", "乐正", "宰父", "谷梁", "拓跋", "夹谷", "轩辕", "令狐", "段干", "百里", "呼延", "东郭", "南门", "羊舌", "微生", "公户", "公玉", "公仪", "梁丘", "公仲", "公上", "公门", "公山", "公坚", "左丘", "公伯", "西门", "公祖", "第五", "公乘", "贯丘", "公皙", "南荣", "东里", "东宫", "仲长", "子书", "子桑", "即墨", "达奚", "褚师", "吴铭"];
 	var name2 =["神", "仙", "灵", "幻", "狂", "道", "圣", "阴", "阳", "傲", "天", "穹", "绝", "尊", "霸", "古", "逆", "奇", "凌", "云", "啸", "乾", "坤", "朽", "鬼", "妖", "灭", "破", "荒"];
+    var color=["#a00","#0a0","gray","purple","orange"];
     //console.log(name1.length);
 	function change(){
 		var i1 = Math.floor(Math.random()*29);
@@ -69,11 +79,19 @@
         var i4 = Math.floor(Math.random()*14);
         var i5 = Math.floor(Math.random()*16);
         var i6 = Math.floor(Math.random()*82);
+        var i7 = Math.floor(Math.random()*5);
 		$("#quotext").html(text1[i1]+text2[i2]+"，"+text3[i3]+text4[i4]+text5[i5]+"。");
-		$("#quoname").html("-"+text3[i4]+"_____"+name1[i6]+name2[i4]+name2[i1]);
+		$("#quoname").html("-"+text3[i4]+"——"+name1[i6]+name2[i4]+name2[i1]);
+        $("p").css("color",color[i7]);
+        $("button").css("backgroundColor",color[i7]);
+        $("body").css("backgroundColor",color[i7]);
 	}
-	document.querySelector("#newquote").onclick=function(){change();};
-	window._bd_share_config={"common":{"bdSnsKey":{},"bdText":"","bdMini":"2","bdPic":"","bdStyle":"0","bdSize":"16"},"share":{},"image":{"viewList":["qzone","tsina","tqq","renren","weixin"],"viewText":"分享到：","viewSize":"16"},"selectShare":{"bdContainerClass":null,"bdSelectMiniList":["qzone","tsina","tqq","renren","weixin"]}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];
+    $("#newquote").click(function(){change();});
+	$("#share").click(function(){
+        console.log("http://service.weibo.com/share/share.php?title="+$("#quotext").html()+$("#quoname").html());
+        window.open("http://service.weibo.com/share/share.php?title="+$("#quotext").html()+$("#quoname").html());
+    });
+	
 </script>
 </body>
 </html>
