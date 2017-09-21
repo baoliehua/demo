@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>markdown</title>
+    <meta charset="utf-8">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/react/15.6.1/react.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/react/15.6.1/react-dom.min.js"></script>
+    <script src="https://unpkg.com/babel-core@5.8.38/browser.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/marked/0.3.6/marked.min.js"></script>
+  </head>
+  <body>
+<div id="example"></div>
+
+<script type="text/babel">
+
+  ReactDOM.render(
+  <h1>Leaderborder</h1>,
+  document.getElementById("example")
+  );
+  ReactDOM.render(
+  <div>
+  <div id="header"></div>
+  <p>#</p>
+  <p>CamperName</p>
+  <p>Points in past 30 days</p>
+  <p>All time point</p>
+  </div>,
+  document.getElementById("example")
+  );
+  
+  var Header = React.createClass({
+  render:function(){
+  return <h1>Leaderborder</h1>;
+  }
+  });
+
+  var Footer = React.createClass(
+  {
+    render:function(){
+    return <div></div>
+  }
+  });
+ 
+
+  var dataarr;
+
+  $.getJSON("http://fcctop100.herokuapp.com/api/fccusers/top/recent",function(data){
+  dataarr=data;
+  console.log(dataarr);
+
+  });
+
+</script>
+</body>
+</html>

@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>markdown</title>
+    <meta charset="utf-8">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/react/15.6.1/react.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/react/15.6.1/react-dom.min.js"></script>
+    <script src="https://unpkg.com/babel-core@5.8.38/browser.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/marked/0.3.6/marked.min.js"></script>
+    <style type="text/css">
+      #main{
+        display: flex;
+        flex-flow: column;
+        justify-content: center;
+        align-items: center;
+        width: 100%;
+
+      }
+      header,footer{
+        width: 100%;
+        height: 3em;
+        background-color: black;
+        color: white;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+      #lheader,.lrow{
+        align-self: center;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 50%;
+      }
+      .col1,.col2,.col3,.col4{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        border:1px solid black;
+        background-color: green;
+      }
+    </style>
+  </head>
+  <body>
+<div id="example"></div>
+
+
+<script type="text/babel">
+  var title="Hello, world!";
+  var Header = React.createClass({
+  render: function(){
+  return <header>Leaderborder</header>;
+  }
+  });
+
+  var Footer = React.createClass({
+        render:function(){
+          return <footer>footer</footer>;
+        }
+  });
+  var Listheader = React.createClass({
+        render:function(){
+          return <div id="lheader">
+            <div className="col1">#</div>
+            <div className="col2">Camper Name</div>
+            <div className="col3">Point in past 30 days</div>
+            <div className="col4">All </div>
+          </div>;
+      }
+});
+var Listrow = React.createClass({
+        render:function(){
+          return <div class="lrow">
+            <div className="col1"></div>
+            <div className="col2"></div>
+            <div className="col3"></div>
+            <div className="col4"></div>
+          </div>;
+      }
+});
+  var List = React.createClass({
+        render:function(){
+        return <div>
+          <Listheader />
+          <Listrow />
+        </div>;
+      }
+});
+  ReactDOM.render(
+  <p>Points in past 30 days</p>,
+  document.getElementById("example")
+  );
+
+
+  ReactDOM.render(
+        <div id="main">
+        <Header />
+        <Listheader />
+        <Footer />
+        </div>,
+        document.getElementById('example')
+      );
+
+ function setrow(){
+    
+} 
+
+    
+  
+  var dataarr=1;
+  $.getJSON("http://fcctop100.herokuapp.com/api/fccusers/top/recent",function(data){
+  console.log(data);
+  });
+</script>
+</body>
+</html>
